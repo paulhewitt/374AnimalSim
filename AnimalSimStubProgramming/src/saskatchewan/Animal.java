@@ -50,6 +50,7 @@ public class Animal extends Entity { // animal class
 		}
 		//Check if there is another thing on our next tile, if we can eat it we do otherwise we cancel the move
 		if (saskatchewan.world[pos.x][pos.y] != null) {
+			
 			Entity other = saskatchewan.world[pos.x][pos.y];
 			if (canEat(other)) {
 				eat(other);
@@ -64,6 +65,7 @@ public class Animal extends Entity { // animal class
 	}
 	
 	private void eat(Entity other) {
+		
 		this.hunger += other.getFeed();
 		saskatchewan.world[other.pos.x][other.pos.y] = null;
 		if (other instanceof Animal)

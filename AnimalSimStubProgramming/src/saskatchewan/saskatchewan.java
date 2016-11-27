@@ -37,7 +37,7 @@ public class saskatchewan {
 		
 		do {
 			System.out.println("Type 'animal' to add a new random animal,\n'plant' for a random plant,\n'tick' to simulate the world, or type 'exit' to exit: ");
-			in = sc.next();
+			in = sc.nextLine();
 			if (in.equals("animal")) {
 				int x, y;
 				do {
@@ -56,6 +56,13 @@ public class saskatchewan {
 				worldTick();
 			} else if (in.equals("tick")) {
 				worldTick();
+				displayWorld();
+			} else if (in.startsWith("tick")) {
+				int count = Integer.parseInt(in.split(" ")[1]);
+				System.out.println(count);
+				for (int i=0;i<count;i++)
+					worldTick();
+				displayWorld();
 			}
 		} while (!in.equals("exit"));
 	}
@@ -75,7 +82,6 @@ public class saskatchewan {
 			world[a.pos.x][a.pos.y] = a;
 			animals.add(a);
 		}
-		
 		//Add 10 random plants
 		for (int i=0;i<10;i++) {
 			do {
@@ -89,11 +95,6 @@ public class saskatchewan {
 	}
 	
 	static void worldTick() {
-		for (int y=0;y<ROWS;y++) {
-			for (int x=0;x<COLS;x++) {
-				world[x][y] = null;
-			}
-		}
 		for (Iterator<Animal> iterator = animals.iterator(); iterator.hasNext();) {
 		    Animal a = iterator.next();
 		    if (a.isDead()) { //Check if animal is dead and delete if it is
@@ -101,14 +102,13 @@ public class saskatchewan {
 				continue;
 		    }
 		    
-		     //Reset animals world position to blank to prepare for it's move
+		    world[a.pos.x][a.pos.y] = null; //Reset animals world position to blank to prepare for it's move
 		    a.tick(); //Perform animals tick actions 
 			world[a.pos.x][a.pos.y] = a; //Put the animal in the world
 		}
 		for (Vegetation p: plants){
 			world[p.pos.x][p.pos.y] = p;
 		}
-		displayWorld();
 	}
 	
 	static void displayWorld() {
