@@ -7,34 +7,34 @@ public class AnimalFactory {
 		switch (animals) {
 		
 		case Bluejay: 
-			return new Bluejay(hunger, mobility, moveOrder, feed, pos);
+			return new Bluejay(hunger, mobility, feed, pos);
 			
 		case Caterpillar: 
-			return new Caterpillar(hunger, mobility, moveOrder, feed, pos);
+			return new Caterpillar(hunger, mobility, feed, pos);
 			
 		case Deer: 
-			return new Deer(hunger, mobility, moveOrder, feed, pos);
+			return new Deer(hunger, mobility, feed, pos);
 			
 		case Fox: 
-			return new Fox(hunger, mobility, moveOrder, feed, pos);
+			return new Fox(hunger, mobility, feed, pos);
 			
 		case Grasshopper: 
-			return new Grasshopper(hunger, mobility, moveOrder, feed, pos);
+			return new Grasshopper(hunger, moveOrder, feed, pos);
 			
 		case Hawk:
-			return new Hawk(hunger, mobility, moveOrder, feed, pos);
+			return new Hawk(hunger, mobility, feed, pos);
 			
 		case Mouse:
-			return new Mouse(hunger, mobility, moveOrder, feed, pos);
+			return new Mouse(hunger, mobility, feed, pos);
 			
 		case Rabbit:
-			return new Rabbit(hunger, mobility, moveOrder, feed, pos);
+			return new Rabbit(hunger, mobility, feed, pos);
 			
 		case Squirrel:
-			return new Squirrel(hunger, mobility, moveOrder, feed, pos);
+			return new Squirrel(hunger, mobility, feed, pos);
 		
 		case Wolf:
-			return new Wolf(hunger, mobility, moveOrder, feed, pos);
+			return new Wolf(hunger, mobility, feed, pos);
 			
 		}
 		
