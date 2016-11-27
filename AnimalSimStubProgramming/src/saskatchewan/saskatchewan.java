@@ -2,7 +2,9 @@ package saskatchewan;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,6 +21,8 @@ public class saskatchewan {
 	static AnimalFactory af = new AnimalFactory();
 	static PlantFactory pf = new PlantFactory();
 	private static Scanner sc;
+	
+	public static Queue<String> alerts = new LinkedList<String>();
 	
 	public static void main(String[] args) {
 		
@@ -109,6 +113,13 @@ public class saskatchewan {
 					System.out.print(world[x][y].getDisplay() + " ");
 			}
 			System.out.println("");
+		}
+		if (!alerts.isEmpty()) {
+			for (Iterator<String> iterator = alerts.iterator(); iterator.hasNext();) {
+			    String message = iterator.next();
+			    System.out.println(message);
+			    iterator.remove();
+			}
 		}
 	}
 }

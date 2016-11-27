@@ -8,6 +8,7 @@ public class Animal extends Entity { // animal class
 	protected int hunger;
 	private int mobility;
 	private int feed;
+	private boolean eaten;
 	
 	public Animal (int hunger, int mobility, char display, int feed, Vector2 pos) { // animal class constructor
 			this.hunger = hunger;
@@ -19,8 +20,12 @@ public class Animal extends Entity { // animal class
 	
 	public boolean isDead()
 	{
-		if (hunger <= 0)
+		if (hunger <= 0) {
+			saskatchewan.alerts.add("A " + this.getClass().getSimpleName() + " died of hunger.");
 			return true;
+		} else if (eaten) {
+			return true;
+		}
 		return false;
 	}
 	
@@ -63,8 +68,8 @@ public class Animal extends Entity { // animal class
 		this.hunger += other.getFeed();
 		saskatchewan.world[other.pos.x][other.pos.y] = null;
 		if (other instanceof Animal)
-			((Animal) other).hunger = 0;
-		System.out.println(this.getClass().getSimpleName() + " ate " + other.getClass().getSimpleName() + " at " + pos.x + " " + pos.y);
+			((Animal) other).eaten = true;
+		saskatchewan.alerts.add(this.getClass().getSimpleName() + " ate " + other.getClass().getSimpleName() + " at " + pos.x + " " + pos.y);
 	}
 	
 	public int getFeed() {
