@@ -48,8 +48,7 @@ public class Animal extends Entity { // animal class
 		if (pos.x < 0 || pos.x >= saskatchewan.COLS || pos.y < 0 || pos.y >= saskatchewan.ROWS) {
 			pos = oldPos;
 		}
-		//Check if there is another thing on our next tile
-		//In future this can be used to check for eating
+		//Check if there is another thing on our next tile, if we can eat it we do otherwise we cancel the move
 		if (saskatchewan.world[pos.x][pos.y] != null) {
 			Entity other = saskatchewan.world[pos.x][pos.y];
 			if (canEat(other)) {
