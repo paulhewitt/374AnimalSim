@@ -53,9 +53,6 @@ public class Animal extends Entity { // animal class
 				pos = oldPos;
 			}
 		}
-		
-		if (this.getClass().getSimpleName().equals("Wolf"))
-			System.out.println(oldPos.x + " " + oldPos.y + " -> " + pos.x + " " + pos.y);
 	}
 	
 	protected boolean canEat(Entity other) {

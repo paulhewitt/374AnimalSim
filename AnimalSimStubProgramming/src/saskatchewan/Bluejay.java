@@ -9,4 +9,11 @@ public class Bluejay extends Omnivore {
 		// TODO Auto-generated constructor stub
 	}
 
+	protected boolean canEat(Entity other) {
+		if (other instanceof Shrub || other instanceof Tree || other instanceof Grasshopper) {
+			return true;
+		}
+		
+		return false;
+	}
 }

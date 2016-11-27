@@ -9,4 +9,11 @@ public class Grasshopper extends Herbivore {
 		// TODO Auto-generated constructor stub
 	}
 
+	protected boolean canEat(Entity other) {
+		if (other instanceof Grass) {
+			return true;
+		}
+		
+		return false;
+	}
 }

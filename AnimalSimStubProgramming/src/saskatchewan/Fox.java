@@ -9,4 +9,11 @@ public class Fox extends Carnivore {
 		// TODO Auto-generated constructor stub
 	}
 
+	protected boolean canEat(Entity other) {
+		if (other instanceof Mouse || other instanceof Squirrel || other instanceof Rabbit) {
+			return true;
+		}
+		
+		return false;
+	}
 }

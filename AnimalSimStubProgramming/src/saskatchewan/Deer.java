@@ -9,4 +9,11 @@ public class Deer extends Omnivore {
 		// TODO Auto-generated constructor stub
 	}
 
+	protected boolean canEat(Entity other) {
+		if (other instanceof Grass || other instanceof Tree || other instanceof Shrub) {
+			return true;
+		}
+		
+		return false;
+	}
 }

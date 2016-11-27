@@ -8,5 +8,13 @@ public class Mouse extends Herbivore {
 		super(hunger, mobility, 'M', feed, pos);
 		// TODO Auto-generated constructor stub
 	}
+	
+	protected boolean canEat(Entity other) {
+		if (other instanceof Grass || other instanceof Tree || other instanceof Shrub) {
+			return true;
+		}
+		
+		return false;
+	}
 
 }

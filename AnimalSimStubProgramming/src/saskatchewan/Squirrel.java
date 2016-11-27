@@ -9,4 +9,11 @@ public class Squirrel extends Herbivore {
 		// TODO Auto-generated constructor stub
 	}
 
+	protected boolean canEat(Entity other) {
+		if (other instanceof Shrub || other instanceof Tree) {
+			return true;
+		}
+		
+		return false;
+	}
 }

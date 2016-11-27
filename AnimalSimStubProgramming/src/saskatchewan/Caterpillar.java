@@ -9,4 +9,11 @@ public class Caterpillar extends Herbivore {
 		// TODO Auto-generated constructor stub
 	}
 
+	protected boolean canEat(Entity other) {
+		if (other instanceof Tree || other instanceof Shrub) {
+			return true;
+		}
+		
+		return false;
+	}
 }
