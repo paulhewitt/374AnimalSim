@@ -4,9 +4,16 @@ import Util.Vector2;
 
 public class Rabbit extends Herbivore {
 
-	public Rabbit(int hunger, int mobility, int moveOrder, int feed, Vector2 pos) {
-		super(hunger, mobility, moveOrder, 'R', feed, pos);
+	public Rabbit(Vector2 pos) {
+		super(4, 3, 'R', 4, pos);
 		// TODO Auto-generated constructor stub
 	}
 
+	protected boolean canEat(Entity other) {
+		if (other instanceof Grass) {
+			return true;
+		}
+		
+		return false;
+	}
 }

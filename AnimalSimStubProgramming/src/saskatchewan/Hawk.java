@@ -4,9 +4,17 @@ import Util.Vector2;
 
 public class Hawk extends Carnivore {
 
-	public Hawk(int hunger, int mobility, int moveOrder, int feed, Vector2 pos) {
-		super(hunger, mobility, moveOrder, 'H', feed, pos);
+	public Hawk(Vector2 pos) {
+		super(5, 3, 'H', 5, pos);
 		// TODO Auto-generated constructor stub
+	}
+	
+	protected boolean canEat(Entity other) {
+		if (other instanceof Mouse || other instanceof Squirrel) {
+			return true;
+		}
+		
+		return false;
 	}
 
 }

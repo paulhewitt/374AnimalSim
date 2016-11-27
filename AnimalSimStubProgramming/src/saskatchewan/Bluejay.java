@@ -4,9 +4,16 @@ import Util.Vector2;
 
 public class Bluejay extends Omnivore {
 
-	public Bluejay(int hunger, int mobility, int moveOrder, int feed, Vector2 pos) {
-		super(hunger, mobility, moveOrder, 'B', feed, pos);
+	public Bluejay(Vector2 pos) {
+		super(5, 3, 'B', 4, pos);
 		// TODO Auto-generated constructor stub
 	}
 
+	protected boolean canEat(Entity other) {
+		if (other instanceof Shrub || other instanceof Tree || other instanceof Grasshopper) {
+			return true;
+		}
+		
+		return false;
+	}
 }

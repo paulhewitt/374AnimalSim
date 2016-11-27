@@ -4,9 +4,16 @@ import Util.Vector2;
 
 public class Squirrel extends Herbivore {
 
-	public Squirrel(int hunger, int mobility, int moveOrder, int feed, Vector2 pos) {
-		super(hunger, mobility, moveOrder, 'S', feed, pos);
+	public Squirrel(Vector2 pos) {
+		super(6, 2, 'S', 5, pos);
 		// TODO Auto-generated constructor stub
 	}
 
+	protected boolean canEat(Entity other) {
+		if (other instanceof Shrub || other instanceof Tree) {
+			return true;
+		}
+		
+		return false;
+	}
 }
