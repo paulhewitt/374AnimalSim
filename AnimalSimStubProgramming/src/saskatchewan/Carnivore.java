@@ -8,5 +8,4 @@ public class Carnivore extends Animal {
 		super(hunger, mobility, display, feed, pos);
 		
 	}
-
 }

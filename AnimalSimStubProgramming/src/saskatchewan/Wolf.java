@@ -9,4 +9,10 @@ public class Wolf extends Carnivore {
 		// TODO Auto-generated constructor stub
 	}
 
+	protected boolean canEat(Entity other) {
+		if (other instanceof Deer || other instanceof Rabbit) {
+			return true;
+		}
+		return false;
+	}
 }

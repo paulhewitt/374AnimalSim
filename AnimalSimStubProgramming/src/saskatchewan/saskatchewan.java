@@ -18,6 +18,7 @@ public class saskatchewan {
 	static List<Vegetation> plants = new ArrayList<Vegetation>();
 	static AnimalFactory af = new AnimalFactory();
 	static PlantFactory pf = new PlantFactory();
+	private static Scanner sc;
 	
 	public static void main(String[] args) {
 		
@@ -26,7 +27,7 @@ public class saskatchewan {
 		generateWorld();
 		worldTick();
 		
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		String in;
 		
 		do {
@@ -57,26 +58,38 @@ public class saskatchewan {
 	
 	static void generateWorld() {
 		for (int i=0;i<10;i++) {
-			animals.add(af.CreateAnimal(Animals.getRandomAnimal(), 100, 1, 10, 5, new Vector2(i, i)));
+			animals.add(af.CreateAnimal(Animals.Wolf, 100, 1, 10, 5, new Vector2(i, i)));
+		}
+		for (int i=0;i<10;i++) {
+			animals.add(af.CreateAnimal(Animals.Deer, 100, 1, 10, 5, new Vector2(i+1, i)));
 		}
 		for (int i=10;i<15;i++) {
 			plants.add(pf.CreatePlant(Plants.getRandomPlant(), 5, new Vector2(i,i)));
 		}
-	}
-	
-	static void deleteEntity(int x, int y) {
-		world[x][y] = null;
+		
+		for (Iterator<Animal> iterator = animals.iterator(); iterator.hasNext();) {
+		    Animal a = iterator.next();
+			world[a.pos.x][a.pos.y] = a; //Put the animal in the world
+		}
+		for (Vegetation p: plants){
+			world[p.pos.x][p.pos.y] = p;
+		}
 	}
 	
 	static void worldTick() {
+		for (int y=0;y<ROWS;y++) {
+			for (int x=0;x<COLS;x++) {
+				world[x][y] = null;
+			}
+		}
 		for (Iterator<Animal> iterator = animals.iterator(); iterator.hasNext();) {
 		    Animal a = iterator.next();
 		    if (a.isDead()) { //Check if animal is dead and delete if it is
-		    	deleteEntity(a.pos.x,a.pos.y);
 				iterator.remove();
 				continue;
 		    }
-		    world[a.pos.x][a.pos.y] = null; //Reset animals world position to blank to prepare for it's move
+		    
+		     //Reset animals world position to blank to prepare for it's move
 		    a.tick(); //Perform animals tick actions 
 			world[a.pos.x][a.pos.y] = a; //Put the animal in the world
 		}
@@ -90,10 +103,10 @@ public class saskatchewan {
 		for (int y=0;y<ROWS;y++) {
 			for (int x=0;x<COLS;x++) {
 				if (world[x][y] == null) {
-					System.out.print('x' + " ");
+					System.out.print("x ");
 					continue;
 				}
-				System.out.print(world[x][y].display + " ");
+					System.out.print(world[x][y].getDisplay() + " ");
 			}
 			System.out.println("");
 		}
