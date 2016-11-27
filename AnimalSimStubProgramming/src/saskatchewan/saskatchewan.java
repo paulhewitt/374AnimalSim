@@ -14,7 +14,9 @@ public class saskatchewan {
 	
 	static final Entity[][] world = new Entity[ROWS][COLS];
 	static List<Animal> animals = new ArrayList<Animal>();
+	static List<Vegetation> plants = new ArrayList<Vegetation>();
 	static AnimalFactory af = new AnimalFactory();
+	static PlantFactory pf = new PlantFactory();
 	
 	public static void main(String[] args) {
 		
@@ -27,15 +29,25 @@ public class saskatchewan {
 		String in;
 		
 		do {
-			System.out.println("Type 'add' to add a new random animal or type 'exit' to exit: ");
+			System.out.println("Type 'animal' to add a new random animal,\n'plant' for a random plant, or type 'exit' to exit: ");
 			in = sc.next();
-			if (in.equals("add")) {
+			if (in.equals("animal")) {
 				int x, y;
 				do {
 					x = r.nextInt(ROWS);
 					y = r.nextInt(COLS);
 				} while (world[x][y] != null);
 				animals.add(af.CreateAnimal(Animals.getRandomAnimal(), 100, 20, 10, 5, new Vector2(x,y)));
+				worldTick();
+			}
+			
+			if (in.equals("plant")) {
+				int x, y;
+				do {
+					x = r.nextInt(ROWS);
+					y = r.nextInt(COLS);
+				} while (world[x][y] != null);
+				plants.add(pf.CreatePlant(Plants.getRandomPlant(), 5, new Vector2(x,y)));
 				worldTick();
 			}
 		} while (!in.equals("exit"));
@@ -46,11 +58,17 @@ public class saskatchewan {
 		for (int i=0;i<10;i++) {
 			animals.add(af.CreateAnimal(Animals.getRandomAnimal(), 100, 20, 10, 5, new Vector2(i, i)));
 		}
+		for (int i=10;i<15;i++) {
+			plants.add(pf.CreatePlant(Plants.getRandomPlant(), 5, new Vector2(i,i)));
+		}
 	}
 	
 	static void worldTick() {
 		for (Animal a : animals) {
 			world[a.pos.x][a.pos.y] = a;
+		for (Vegetation p: plants){
+			world[p.pos.x][p.pos.y] = p;
+		}
 		}
 		
 		displayWorld();
