@@ -18,6 +18,7 @@ public class saskatchewan {
 	static List<Vegetation> plants = new ArrayList<Vegetation>();
 	static AnimalFactory af = new AnimalFactory();
 	static PlantFactory pf = new PlantFactory();
+	
 	private static Scanner sc;
 	
 	public static void main(String[] args) {
@@ -53,25 +54,32 @@ public class saskatchewan {
 				worldTick();
 			}
 		} while (!in.equals("exit"));
-		
 	}
 	
 	static void generateWorld() {
+		Random r = new Random();
+		int randX = r.nextInt(ROWS);
+		int randY = r.nextInt(COLS);
+		
+		//Add 10 random animals
 		for (int i=0;i<10;i++) {
-			animals.add(af.CreateAnimal(Animals.Wolf, 100, 1, 10, 5, new Vector2(i, i)));
-		}
-		for (int i=0;i<10;i++) {
-			animals.add(af.CreateAnimal(Animals.Deer, 100, 1, 10, 5, new Vector2(i+1, i)));
-		}
-		for (int i=10;i<15;i++) {
-			plants.add(pf.CreatePlant(Plants.getRandomPlant(), 5, new Vector2(i,i)));
+			do {
+				randX = r.nextInt(ROWS);
+				randY = r.nextInt(COLS);
+			} while(world[randX][randY] != null);
+			Animal a = af.CreateAnimal(Animals.getRandomAnimal(), 100, 1, 10, 5, new Vector2(randX, randY));
+			world[a.pos.x][a.pos.y] = a;
+			animals.add(a);
 		}
 		
-		for (Iterator<Animal> iterator = animals.iterator(); iterator.hasNext();) {
-		    Animal a = iterator.next();
-			world[a.pos.x][a.pos.y] = a; //Put the animal in the world
-		}
-		for (Vegetation p: plants){
+		//Add 10 random plants
+		for (int i=0;i<10;i++) {
+			do {
+				randX = r.nextInt(ROWS);
+				randY = r.nextInt(COLS);
+			} while(world[randX][randY] != null);
+			Vegetation p = pf.CreatePlant(Plants.getRandomPlant(), 5, new Vector2(randX, randY));
+			plants.add(p);
 			world[p.pos.x][p.pos.y] = p;
 		}
 	}
