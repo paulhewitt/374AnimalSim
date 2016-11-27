@@ -5,11 +5,11 @@ import Util.Vector2;
 public class Vegetation extends Entity {
 
 	private int feed;
-	private int size;
 	
-	public Vegetation (int feed, int size, Vector2 pos) { // animal class constructor
+	public Vegetation (int feed, char display, Vector2 pos) { // animal class constructor
 			this.feed = feed;
 			this.pos = pos;
+			this.display = display;
 	}
 	
 	private boolean isEaten(int feed)
