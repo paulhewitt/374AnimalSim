@@ -29,7 +29,7 @@ public class saskatchewan {
 		String in;
 		
 		do {
-			System.out.println("Type 'add' to add a new random animal or type 'exit' to exit: ");
+			System.out.println("Type 'add' to add a new random animal,\n'addp' for a random plant, or type 'exit' to exit: ");
 			in = sc.next();
 			if (in.equals("add")) {
 				int x, y;
@@ -38,6 +38,17 @@ public class saskatchewan {
 					y = r.nextInt(COLS);
 				} while (world[x][y] != null);
 				animals.add(af.CreateAnimal(Animals.getRandomAnimal(), 100, 20, 10, 5, new Vector2(x,y)));
+				//plants.add(pf.CreatePlant(Plants.getRandomPlant(), 5, 1, new Vector2(x,y)));
+				worldTick();
+			}
+			
+			if (in.equals("addp")) {
+				int x, y;
+				do {
+					x = r.nextInt(ROWS);
+					y = r.nextInt(COLS);
+				} while (world[x][y] != null);
+				//animals.add(af.CreateAnimal(Animals.getRandomAnimal(), 100, 20, 10, 5, new Vector2(x,y)));
 				plants.add(pf.CreatePlant(Plants.getRandomPlant(), 5, 1, new Vector2(x,y)));
 				worldTick();
 			}
@@ -48,7 +59,9 @@ public class saskatchewan {
 	static void generateWorld() {
 		for (int i=0;i<10;i++) {
 			animals.add(af.CreateAnimal(Animals.getRandomAnimal(), 100, 20, 10, 5, new Vector2(i, i)));
-			plants.add(pf.CreatePlant(Plants.getRandomPlant(), 5, 1, new Vector2(i, i)));
+		}
+		for (int i=10;i<15;i++) {
+			plants.add(pf.CreatePlant(Plants.getRandomPlant(), 5, 1, new Vector2(i,i)));
 		}
 	}
 	
