@@ -5,7 +5,7 @@ import Util.Vector2;
 public class Bluejay extends Omnivore {
 
 	public Bluejay(Vector2 pos) {
-		super(5, 3, 'B', 4, pos);
+		super(10, 3, 'B', 4, pos);
 		// TODO Auto-generated constructor stub
 	}
 

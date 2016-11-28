@@ -72,7 +72,7 @@ public class saskatchewan {
 		int randY = r.nextInt(COLS);
 		
 		//Add 10 random animals
-		for (int i=0;i<10;i++) {
+		for (int i=0;i<40;i++) {
 			do {
 				randX = r.nextInt(ROWS);
 				randY = r.nextInt(COLS);
@@ -82,7 +82,7 @@ public class saskatchewan {
 			animals.add(a);
 		}
 		//Add 10 random plants
-		for (int i=0;i<10;i++) {
+		for (int i=0;i<20;i++) {
 			do {
 				randX = r.nextInt(ROWS);
 				randY = r.nextInt(COLS);

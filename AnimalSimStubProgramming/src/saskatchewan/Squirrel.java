@@ -5,7 +5,7 @@ import Util.Vector2;
 public class Squirrel extends Herbivore {
 	
 	public Squirrel(Vector2 pos) {
-		super(6, 2, 'S', 5, pos);
+		super(12, 2, 'S', 5, pos);
 	}
 
 	protected boolean canEat(Entity other) {
