@@ -4,9 +4,8 @@ import Util.Vector2;
 
 public class Deer extends Omnivore {
 
-	public Deer(int hunger, int mobility, int feed, Vector2 pos) {
-		super(hunger, mobility, 'D', feed, pos);
-		// TODO Auto-generated constructor stub
+	public Deer(Vector2 pos) {
+		super(7, 2, 'D', 7, pos);
 	}
 
 	protected boolean canEat(Entity other) {

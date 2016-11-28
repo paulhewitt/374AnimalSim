@@ -3,10 +3,9 @@ package saskatchewan;
 import Util.Vector2;
 
 public class Squirrel extends Herbivore {
-
-	public Squirrel(int hunger, int mobility, int feed, Vector2 pos) {
-		super(hunger, mobility, 'S', feed, pos);
-		// TODO Auto-generated constructor stub
+	
+	public Squirrel(Vector2 pos) {
+		super(6, 2, 'S', 5, pos);
 	}
 
 	protected boolean canEat(Entity other) {

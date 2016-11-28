@@ -20,7 +20,6 @@ public class saskatchewan {
 	static List<Vegetation> plants = new ArrayList<Vegetation>();
 	static AnimalFactory af = new AnimalFactory();
 	static PlantFactory pf = new PlantFactory();
-	
 	private static Scanner sc;
 	
 	public static Queue<String> alerts = new LinkedList<String>();
@@ -44,7 +43,7 @@ public class saskatchewan {
 					x = r.nextInt(ROWS);
 					y = r.nextInt(COLS);
 				} while (world[x][y] != null);
-				animals.add(af.CreateAnimal(Animals.getRandomAnimal(), 100, 1, 10, 5, new Vector2(x,y)));
+				animals.add(af.CreateAnimal(Animals.getRandomAnimal(), new Vector2(x,y)));
 				worldTick();
 			} else if (in.equals("plant")) {
 				int x, y;
@@ -78,7 +77,7 @@ public class saskatchewan {
 				randX = r.nextInt(ROWS);
 				randY = r.nextInt(COLS);
 			} while(world[randX][randY] != null);
-			Animal a = af.CreateAnimal(Animals.getRandomAnimal(), 100, 1, 10, 5, new Vector2(randX, randY));
+			Animal a = af.CreateAnimal(Animals.getRandomAnimal(), new Vector2(randX, randY));
 			world[a.pos.x][a.pos.y] = a;
 			animals.add(a);
 		}
@@ -92,6 +91,14 @@ public class saskatchewan {
 			plants.add(p);
 			world[p.pos.x][p.pos.y] = p;
 		}
+		
+		for (Iterator<Animal> iterator = animals.iterator(); iterator.hasNext();) {
+		    Animal a = iterator.next();
+			world[a.pos.x][a.pos.y] = a; //Put the animal in the world
+		}
+		for (Vegetation p: plants){
+			world[p.pos.x][p.pos.y] = p;
+		}
 	}
 	
 	static void worldTick() {
@@ -101,7 +108,6 @@ public class saskatchewan {
 				iterator.remove();
 				continue;
 		    }
-		    
 		    world[a.pos.x][a.pos.y] = null; //Reset animals world position to blank to prepare for it's move
 		    a.tick(); //Perform animals tick actions 
 			world[a.pos.x][a.pos.y] = a; //Put the animal in the world

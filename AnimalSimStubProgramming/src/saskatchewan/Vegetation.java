@@ -14,6 +14,6 @@ public class Vegetation extends Entity {
 	
 	private boolean isEaten(int feed)
 	{
-		return true; // just a placeholder for now
+		return true; // just a placeholder for nowa
 	}
 }

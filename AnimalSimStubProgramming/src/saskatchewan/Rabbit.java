@@ -4,9 +4,8 @@ import Util.Vector2;
 
 public class Rabbit extends Herbivore {
 
-	public Rabbit(int hunger, int mobility, int feed, Vector2 pos) {
-		super(hunger, mobility, 'R', feed, pos);
-		// TODO Auto-generated constructor stub
+	public Rabbit(Vector2 pos) {
+		super(4, 3, 'R', 4, pos);
 	}
 
 	protected boolean canEat(Entity other) {

@@ -4,9 +4,8 @@ import Util.Vector2;
 
 public class Grasshopper extends Herbivore {
 
-	public Grasshopper(int hunger, int mobility, int feed, Vector2 pos) {
-		super(hunger, mobility, 'G', feed, pos);
-		// TODO Auto-generated constructor stub
+	public Grasshopper(Vector2 pos) {
+		super(7, 1, 'G', 3, pos);
 	}
 
 	protected boolean canEat(Entity other) {

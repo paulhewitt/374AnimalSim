@@ -3,38 +3,38 @@ package saskatchewan;
 import Util.Vector2;
 
 public class AnimalFactory {
-	public Animal CreateAnimal(Animals animals, int hunger, int mobility, int moveOrder, int feed, Vector2 pos) {
+	public Animal CreateAnimal(Animals animals, Vector2 pos) {
 		switch (animals) {
 		
 		case Bluejay: 
-			return new Bluejay(hunger, mobility, feed, pos);
+			return new Bluejay(pos);
 			
 		case Caterpillar: 
-			return new Caterpillar(hunger, mobility, feed, pos);
+			return new Caterpillar(pos);
 			
 		case Deer: 
-			return new Deer(hunger, mobility, feed, pos);
+			return new Deer(pos);
 			
 		case Fox: 
-			return new Fox(hunger, mobility, feed, pos);
+			return new Fox(pos);
 			
 		case Grasshopper: 
-			return new Grasshopper(hunger, moveOrder, feed, pos);
+			return new Grasshopper(pos);
 			
 		case Hawk:
-			return new Hawk(hunger, mobility, feed, pos);
+			return new Hawk(pos);
 			
 		case Mouse:
-			return new Mouse(hunger, mobility, feed, pos);
+			return new Mouse(pos);
 			
 		case Rabbit:
-			return new Rabbit(hunger, mobility, feed, pos);
+			return new Rabbit(pos);
 			
 		case Squirrel:
-			return new Squirrel(hunger, mobility, feed, pos);
+			return new Squirrel(pos);
 		
 		case Wolf:
-			return new Wolf(hunger, mobility, feed, pos);
+			return new Wolf(pos);
 			
 		}
 		
